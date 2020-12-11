@@ -93,7 +93,7 @@ public class UserServiceImpl
 
 	@Override
 	public List<UserNameCountTodos> getCountUserTodos() {
-		return null;
+		return userRepo.getCountUserTodos();
 	}
 
 }
