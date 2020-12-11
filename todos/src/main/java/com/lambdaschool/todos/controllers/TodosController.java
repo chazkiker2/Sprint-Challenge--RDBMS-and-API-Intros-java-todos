@@ -1,6 +1,6 @@
 package com.lambdaschool.todos.controllers;
 
-import com.lambdaschool.todos.services.TodosService;
+import com.lambdaschool.todos.services.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +20,7 @@ public class TodosController
      * Using the Todos service to process user, todos combinations data
      */
     @Autowired
-    TodosService todosService;
+    TodoService todoService;
 
     /**
      * Given the todo id, mark the task as complete
@@ -32,7 +32,7 @@ public class TodosController
     @PatchMapping(value = "/todo/{todoid}")
     public ResponseEntity<?> completeTodo(@PathVariable long todoid)
     {
-        todosService.markComplete(todoid);
+        todoService.markComplete(todoid);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

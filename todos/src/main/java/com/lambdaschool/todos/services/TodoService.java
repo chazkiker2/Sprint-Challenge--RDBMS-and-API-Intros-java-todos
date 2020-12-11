@@ -1,6 +1,6 @@
 package com.lambdaschool.todos.services;
 
-public interface TodosService
+public interface TodoService
 {
     void markComplete(long todoid);
 }
