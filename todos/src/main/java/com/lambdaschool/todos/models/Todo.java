@@ -16,6 +16,7 @@ public class Todo
 		extends Auditable {
 	/**
 	 * The primary key (long) of the todos table
+	 * Cannot be null.
 	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -33,11 +34,11 @@ public class Todo
 	 * True if complete, false if incomplete.
 	 * All todos initialize with completed=false.
 	 */
-	@Column
+	@Column(columnDefinition = "boolean default false")
 	private boolean completed;
 
 	/**
-	 * The userid of the user assigned to this todoItem is what is stored in the database.
+	 * Foreign key — The userid of the user assigned to this todoItem is what is stored in the database.
 	 * This is the entire user object!
 	 * <p>
 	 * Forms a Many to One relationship between todos and users.
@@ -72,34 +73,72 @@ public class Todo
 	}
 
 
+	/**
+	 * Getter for todoid
+	 *
+	 * @return todoid The todoid (long) of the todo item
+	 */
 	public long getTodoid() {
 		return todoid;
 	}
 
+	/**
+	 * Setter for todoid
+	 *
+	 * @param todoid The new todoid (long) for the todo item
+	 */
 	public void setTodoid(long todoid) {
 		this.todoid = todoid;
 	}
 
+	/**
+	 * Getter for description
+	 *
+	 * @return the description (String) of the todo item
+	 */
 	public String getDescription() {
 		return description;
 	}
 
+	/**
+	 * Setter for description
+	 *
+	 * @param description the new description (String) for the todo item
+	 */
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
+	/**
+	 * Getter for completed
+	 *
+	 * @return true (boolean) if the todo is completed, false (booelan) if the todo is incomplete
+	 */
 	public boolean isCompleted() {
 		return completed;
 	}
 
+	/**
+	 * Setter for completed
+	 *
+	 * @param completed true to set the status to complete, false to set incomplete
+	 */
 	public void setCompleted(boolean completed) {
 		this.completed = completed;
 	}
 
+	/**
+	 * Getter for user
+	 * @return The user (User) associated with this todo item
+	 */
 	public User getUser() {
 		return user;
 	}
 
+	/**
+	 * Setter for user
+	 * @param user The new user (User) to associate with this todo item
+	 */
 	public void setUser(User user) {
 		this.user = user;
 	}

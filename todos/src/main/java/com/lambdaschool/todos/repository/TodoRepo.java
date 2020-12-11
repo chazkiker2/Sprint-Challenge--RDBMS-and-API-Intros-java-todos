@@ -13,6 +13,12 @@ import org.springframework.transaction.annotation.Transactional;
 public interface TodoRepo
 		extends CrudRepository<Todo, Long> {
 
+	/**
+	 * Custom query to mark the specific todo with the given todoid
+	 * as complete
+	 * @param todoid The todoid (long) for the todo item to mark as complete
+	 * @param username The username of the user updating this todo
+	 */
 	@Transactional
 	@Modifying
 	@Query(value="UPDATE todos SET completed='true', last_modified_by=:username, last_modified_date=CURRENT_TIMESTAMP " +

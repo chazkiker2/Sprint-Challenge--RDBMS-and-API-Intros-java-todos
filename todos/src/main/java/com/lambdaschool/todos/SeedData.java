@@ -38,6 +38,8 @@ public class SeedData
 	 * Note this process does not remove data from the database. So if data exists in the database
 	 * prior to running this process, that data remains in the database.
 	 *
+	 * OPTION to generate 100 more random Users with JavaFaker towards the bottom
+	 *
 	 * @param args The parameter is required by the parent interface but is not used in this process.
 	 */
 	@Transactional
@@ -112,10 +114,26 @@ public class SeedData
 		);
 		userService.save(u5);
 
-		if (true) {
-
+		/**
+		 * Set the below "false" to true to create 100 users with JavaFaker
+		 *
+		 * All users will follow this structure:
+		 * String username — a randomly generated username (format: `first.last`)
+		 * String password — a password set to "password" — hard coded, not randomly generated
+		 * String primaryemail — a randomly generated email address (format: first.last@gmail.com)
+		 *
+		 * Random() will generate a random number `n` [0, 4) — (i.e., 0, 1, 2, or 3)
+		 * JavaFaker will randomly generate `n` [0, 4) todos (Todo) and add said todo to the
+		 * fake user's todoList
+		 *
+		 *
+		 *
+		 */
+		if (false) {
+			// utilities for generating random seed data
 			Random rand      = new Random();
 			Faker  nameFaker = new Faker(new Locale("en-US"));
+
 
 			for (int i = 0; i < 100; i++) {
 				User fakeUser = new User(

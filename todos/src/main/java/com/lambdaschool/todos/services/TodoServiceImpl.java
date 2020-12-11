@@ -15,13 +15,23 @@ import javax.persistence.EntityNotFoundException;
 public class TodoServiceImpl
 		implements TodoService {
 
+	/**
+	 * Connects this service to the Todos table
+	 */
 	@Autowired
 	private TodoRepo todoRepo;
 
+	/**
+	 * Connects this service to the auditing service in order to get current user's username
+	 */
 	@Autowired
 	private UserAuditing userAuditing;
 
 
+	/**
+	 * Set the todoItem with the given todoid as complete
+	 * @param todoid The todoid (long) of the todoItem to update
+	 */
 	@Transactional
 	@Override
 	public void markComplete(long todoid) {

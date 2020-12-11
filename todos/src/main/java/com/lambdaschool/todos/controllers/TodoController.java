@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/todos")
-public class TodosController {
+public class TodoController {
 	/**
 	 * Using the Todos service to process user, todos combinations data
 	 */
