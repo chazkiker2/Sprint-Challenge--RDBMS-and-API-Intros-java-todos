@@ -1,6 +1,7 @@
 package com.lambdaschool.todos;
 
 
+import com.github.javafaker.Faker;
 import com.lambdaschool.todos.models.Todo;
 import com.lambdaschool.todos.models.User;
 import com.lambdaschool.todos.services.UserService;
@@ -8,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Locale;
+import java.util.Random;
 
 
 
@@ -107,6 +111,33 @@ public class SeedData
 				"misskitty@school.lambda"
 		);
 		userService.save(u5);
+
+		if (true) {
+
+			Random rand      = new Random();
+			Faker  nameFaker = new Faker(new Locale("en-US"));
+
+			for (int i = 0; i < 100; i++) {
+				User fakeUser = new User(
+						nameFaker.name()
+						         .username(),
+						"password",
+						nameFaker.internet()
+						         .emailAddress()
+				);
+				int numTodos = rand.nextInt(4);
+				for (int j = 0; j < numTodos; j++) {
+					fakeUser.getTodos()
+					        .add(new Todo(
+							        fakeUser,
+							        nameFaker.chuckNorris()
+							                 .fact()
+					        ));
+				}
+				userService.save(fakeUser);
+
+			}
+		}
 	}
 
 }
