@@ -12,9 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public interface TodoRepo
 		extends CrudRepository<Todo, Long> {
-//			value = "UPDATE todos " +
-//	               "SET completed='true', last_modified_by=:username, last_modified_date=CURRENT_TIMESTAMP " +
-//	               "WHERE todoid=:todoid ",
+
 	@Transactional
 	@Modifying
 	@Query(value="UPDATE todos SET completed='true', last_modified_by=:username, last_modified_date=CURRENT_TIMESTAMP " +

@@ -3,7 +3,6 @@ package com.lambdaschool.todos.services;
 
 import com.lambdaschool.todos.models.Todo;
 import com.lambdaschool.todos.models.User;
-//import com.lambdaschool.todos.repository.TodoRepo;
 import com.lambdaschool.todos.repository.UserRepo;
 import com.lambdaschool.todos.views.UserNameCountTodos;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,9 +27,6 @@ public class UserServiceImpl
 	 */
 	@Autowired
 	private UserRepo userRepo;
-
-//		@Autowired
-//	  private TodoRepo todoRepo;
 
 	/**
 	 * Connects this service to the auditing service in order to get current user name
@@ -87,12 +83,8 @@ public class UserServiceImpl
 						newUser,
 						td.getDescription()
 				);
-				//				newTodo.setDescription(td.getDescription());
-				//				newTodo.setUser(newUser);
-//				todoRepo.save(newTodo);
 				newUser.getTodos()
 				       .add(newTodo);
-				//		    todoRepo.save(td);
 			}
 		}
 

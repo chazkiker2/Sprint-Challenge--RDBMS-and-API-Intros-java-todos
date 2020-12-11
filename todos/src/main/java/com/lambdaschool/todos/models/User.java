@@ -47,6 +47,9 @@ public class User
 	@Email
 	private String primaryemail;
 
+	/**
+	 * List of todos associated with this user. Forms a one to many relationship with todo. One user to many todos.
+	 */
 	@OneToMany(mappedBy = "user",
 	           cascade = CascadeType.ALL,
 	           orphanRemoval = true)
@@ -75,18 +78,6 @@ public class User
 		setUsername(username);
 		setPassword(password);
 		this.primaryemail = primaryemail;
-	}
-
-	public User(
-			String username,
-			String password,
-			String primaryemail,
-			List<Todo> todos
-	) {
-		setUsername(username);
-		setPassword(password);
-		this.primaryemail = primaryemail;
-		setTodos(todos);
 	}
 
 	/**
@@ -171,10 +162,18 @@ public class User
 		this.password = password;
 	}
 
+	/**
+	 * Getter for todos list
+	 * @return the user's todo list (List<Todo>)
+	 */
 	public List<Todo> getTodos() {
 		return todos;
 	}
 
+	/**
+	 * Setter for todo list
+	 * @param todos the list of todos to set for user
+	 */
 	public void setTodos(List<Todo> todos) {
 		this.todos = todos;
 	}
